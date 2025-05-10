@@ -46,7 +46,7 @@ spotify-clone/
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/spotify-clone.git
+   git clone https://github.com/iamarin2224/Spotify_Clone.git
    ```
 
 2. **Navigate to the project directory**:
