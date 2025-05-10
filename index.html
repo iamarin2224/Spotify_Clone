@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Dosis:wght@200..800&family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/output.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black text-white font-roboto">
+
+    <div class="flex gap-[5px] lg:relative">
+
+        <div class="left w-[350px]">
+
+            <div class="home h-[20vh] m-[10px] p-[10px] bg-gray-900 rounded-lg">
+
+                <div class="logo mb-[20px] flex justify-between items-center">
+                    <a href="#home"> 
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Black_Spotify_logo_with_text.svg" alt="spotify logo" class="logo-img invert w-[125px]">
+                    </a>
+                    <div class="cross-div hidden">
+                        <button class="w-[30px] h-[30px] rounded-[50%] cursor-pointer p-[8px] hover:bg-gray-700 flex justify-center items-center" id="cross-btn"><i class="fa-solid fa-xmark"></i></i></button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 place-items-center text-center text-lg">
+                    <div class="home-icon">
+                        <a href="#home">
+                            <i class="fa-solid fa-house"></i>
+                            <p>Home</p>
+                        </a>
+                    </div>
+                    <div class="search-icon cursor-pointer">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <p>Search</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="library min-h-[75vh] m-[10px] p-[10px] bg-gray-900 rounded-lg relative tracking-wider">
+
+                <div class="flex justify-between items-center">
+                    <p class="font-extrabold font-roboto text-2xl">Your Library</p>
+                    <button class="w-[30px] h-[30px] rounded-[50%] cursor-pointer p-[8px] hover:bg-gray-700 flex justify-center items-center"><i class="fa-solid fa-plus"></i></button>
+                </div>
+
+                <div class="ml-[20px] mt-[20px] h-[55vh] overflow-y-scroll" id="librarySongList">
+                    <!-- added songs showup here -->
+                </div>
+                    
+                <div class="footer absolute bottom-0">
+                    <div class="flex flex-wrap gap-3 text-[10px] mr-[24px] p-[10px]">
+                        <div><a href="https://www.spotify.com/in-en/legal/"><span>Legal</span></a></div>
+                        <div><a href="https://www.spotify.com/in-en/safetyandprivacy/"><span>Safety & Privacy Center</span></a></div>
+                        <div><a href="https://www.spotify.com/in-en/legal/privacy-policy/"><span>Privacy Policy</span></a></div>
+                        <div><a href="https://www.spotify.com/in-en/legal/cookies-policy/"><span>Cookies</span></a></div>
+                        <div><a href="https://www.spotify.com/in-en/legal/privacy-policy/#s3"><span>About Ads</span></a></div>
+                        <div><a href="https://www.spotify.com/in-en/accessibility/"><span>Accessibility</span></a></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="right min-h-[95vh] flex-1 m-[10px] bg-gray-900 rounded-lg relative">
+
+            <div class="header flex justify-between items-center p-[10px] bg-gray-950 rounded-lg">
+                <div class="text-xl flex gap-4 items-center">
+                    <div class="hamburger-div hidden" id="hamburger">
+                        <button class="w-[30px] h-[30px] rounded-[50%] cursor-pointer p-[10px] text-[15px] hover:bg-gray-700 flex justify-center items-center"><i class="fa-solid fa-bars"></i></button>
+                    </div>
+                        <p>Made with ❤️ by Arin</p>
+                </div>
+                <div class="mr-[10px] flex gap-[20px]">
+                    <button class="font-bold text-gray-200 tracking-wider cursor-pointer hover:font-extrabold hover:text-white zoom">Sign Up</button>
+                    <button class="py-[10px] px-[30px] bg-white text-black font-extrabold tracking-wider rounded-full cursor-pointer hover:bg-gray-200 zoom">Log In</button>
+                </div>
+            </div>
+
+            <div class="main-content h-[80vh] overflow-y-scroll overflow-x-hidden pb-[50px]">
+
+                <div class="spotify-playlists" id="home">
+    
+                    <h1 class="font-extrabold font-roboto text-2xl p-[16px]">Spotify Playlists</h1>
+    
+                    <div class="card-container flex flex-wrap">
+    
+                        <a href="#romantic-songs">
+                            <div class="card w-[200px] p-[15px] ml-[20px] cursor-pointer hover:bg-gray-800 rounded-lg relative">
+                                <img src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000d72c8ee78a9f0a2089bc4db167ba" alt="bollywood mush playlist" class="rounded-lg">
+                                <div class="play shadow-lg" id="play">
+                                    <i class="fa-solid fa-play"></i>
+                                </div>
+                                <h2 class="font-bold text-lg pt-[15px]">Romantic</h2>
+                                <p class="text-sm font-[200] tracking-wider pt-[3px] line-clamp-2">Heartfelt tunes for every shade of love — fall deeper with every beat.</p>
+                            </div>
+                        </a>
+    
+                        <a href="#soulful-songs">
+                            <div class="card w-[200px] p-[15px] ml-[20px] cursor-pointer hover:bg-gray-800 rounded-lg relative">
+                                <img src="https://i.scdn.co/image/ab67616d00001e027be2c8cb932a65f74f42328b" alt="bollywood mush playlist" class="rounded-lg">
+                                <div class="play shadow-lg" id="play">
+                                    <i class="fa-solid fa-play"></i>
+                                </div>
+                                <h2 class="font-bold text-lg pt-[15px]">Soulful</h2>
+                                <p class="text-sm font-[200] tracking-wider pt-[3px] line-clamp-2"> Smooth, stirring melodies that touch your soul and stay with you.</p>
+                            </div>
+                        </a>
+    
+                        <a href="#upbeat-songs">
+                            <div class="card w-[200px] p-[15px] ml-[20px] cursor-pointer hover:bg-gray-800 rounded-lg relative">
+                                <img src="https://i.scdn.co/image/ab67706f00000002261b4231fdb64c7adbdd7d1c" alt="bollywood mush playlist" class="rounded-lg">
+                                <div class="play shadow-lg" id="play">
+                                    <i class="fa-solid fa-play"></i>
+                                </div>
+                                <h2 class="font-bold text-lg pt-[15px]">Upbeat</h2>
+                                <p class="text-sm font-[200] tracking-wider pt-[3px] line-clamp-2">Feel-good anthems to lift your mood and get you moving.</p>
+                            </div>
+                        </a>
+    
+                        <a href="#hindi-songs">
+                            <div class="card w-[200px] p-[15px] ml-[20px] cursor-pointer hover:bg-gray-800 rounded-lg relative">
+                                <img src="https://i.scdn.co/image/ab67706f00000002d25f525de9569d6e433532aa" alt="bollywood mush playlist" class="rounded-lg">
+                                <div class="play shadow-lg" id="play">
+                                    <i class="fa-solid fa-play"></i>
+                                </div>
+                                <h2 class="font-bold text-lg pt-[15px]">All-Out Bollywood</h2>
+                                <p class="text-sm font-[200] tracking-wider pt-[3px] line-clamp-2"> Smooth, stirring melodies that touch your soul and stay with you.</p>
+                            </div>
+                        </a>
+    
+                        <a href="#english-songs">
+                            <div class="card w-[200px] p-[15px] ml-[20px] cursor-pointer hover:bg-gray-800 rounded-lg relative">
+                                <img src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000d72ce5c16f86ea18ae576f5a1e50" alt="bollywood mush playlist" class="rounded-lg">
+                                <div class="play shadow-lg" id="play">
+                                    <i class="fa-solid fa-play"></i>
+                                </div>
+                                <h2 class="font-bold text-lg pt-[15px]">English Hits</h2>
+                                <p class="text-sm font-[200] tracking-wider pt-[3px] line-clamp-2"> Smooth, stirring melodies that touch your soul and stay with you.</p>
+                            </div>
+                        </a>
+    
+                    </div>
+                    
+                </div>
+    
+                <div class="browse-all">
+    
+                    <h1 class="font-extrabold font-roboto text-2xl p-[16px]">Browse All</h1>
+    
+                    <div class="flex flex-wrap" id="browse-all-card-container">
+                        <!-- songs come up here -->
+                    </div>
+                    
+                </div>
+
+                <div class="romantic-songs" id="romantic-songs">
+                    <h1 class="font-extrabold font-roboto text-2xl p-[16px]">Romantic Playlist</h1>
+                    <div class="flex flex-wrap" id="romantic-card-container">
+                        <!-- content goes here -->
+                    </div>
+                </div>
+
+                <div class="soulful-songs" id="soulful-songs">
+                    <h1 class="font-extrabold font-roboto text-2xl p-[16px]">Soulful Playlist</h1>    
+                    <div class="playlist-card-container flex flex-wrap" id="soulful-card-container">
+                        <!-- content goes here -->
+                    </div>   
+                </div>
+
+                <div class="upbeat-songs" id="upbeat-songs">
+                    <h1 class="font-extrabold font-roboto text-2xl p-[16px]">UpBeat Playlists</h1>
+                    <div class="playlist-card-container flex flex-wrap" id="upbeat-card-container">
+                        <!-- content goes here -->
+                    </div>
+                </div>
+
+                <div class="hindi-songs" id="hindi-songs">
+                    <h1 class="font-extrabold font-roboto text-2xl p-[16px]">Hindi Songs</h1>
+                    <div class="playlist-card-container flex flex-wrap" id="hindi-card-container">
+                        <!-- content goes here -->
+                    </div>
+                </div>
+
+                <div class="english-songs" id="english-songs">
+                    <h1 class="font-extrabold font-roboto text-2xl p-[16px]">English Songs</h1>
+                    <div class="playlist-card-container flex flex-wrap" id="english-card-container">
+                        <!-- content goes here -->
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="playbar absolute bottom-[10px] left-0 right-0 w-[95%] h-[80px] mx-auto rounded-full bg-gray-950">
+
+                <div class="playbar-content flex justify-between py-[10px] px-[50px] h-[74px] relative">
+
+                    <div class="songInfo flex gap-[10px]">
+                        <div class="thumnail">
+                            <img src="" alt="song icon" class="h-[50px] w-auto rounded-lg smooth" id="thumbnail-img">
+                        </div>
+                        <div class="title-artist">
+                            <p class="font-bold text-lg smooth" id="title"></p>
+                            <p class="text-[10px] smooth" id="artists"></p>
+                        </div>
+                        <div class="add-icon flex items-center ml-[10px]">
+                            <button class="w-[30px] h-[30px] rounded-[50%] cursor-pointer p-[8px] hover:bg-gray-700 flex justify-center items-center" id="addToLibrary"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="playbarBtns flex justify-center items-center gap-[20px] absolute left-[50%] top-[50%] translate-[-50%]">
+                        <button class="prevBtn p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900"><i class="fa-solid fa-backward-step"></i></button>
+                        <button class="playBtn p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900"><i class="fa-solid fa-play"></i></button>
+                        <button class="pauseBtn hidden p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900"><i class="fa-solid fa-pause"></i></button>
+                        <button class="nextBtn p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900"><i class="fa-solid fa-forward-step"></i></button>
+                    </div>
+
+                    <div class="songTime flex items-center gap-4">
+                        <div class="flex items-center gap-[1px]">
+                            <p class="text-[14px]" id="currentTiming">0:00</p>
+                            <p class="text-[16px] font-bold">/</p>
+                            <p class="text-[14px]" id="totalDuration">0:00</p>
+                        </div>
+                        <button class="text-white" id="mute">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <button class="text-white hidden" id="unmute">
+                            <i class="fa-solid fa-volume-xmark"></i>
+                        </button>
+                    </div>
+
+                </div>   
+                
+                <div class="progressContainer w-[92%] mx-auto h-[6px] bg-gray-600 rounded-full cursor-pointer">
+                    <div class="progress w-0 h-full bg-white rounded-full relative transition-width duration-300 ease-linear after:content-['']  after:absolute after:right-[-2px] after:h-[12px] after:w-[12px] after:top-1/2 after:translate-y-[-50%] after:bg-gray-200 after:rounded-full after:shadow-2xl after:transition-all after:duration-300 after:ease-linear"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+
