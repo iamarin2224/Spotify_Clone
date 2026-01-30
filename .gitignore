@@ -2,3 +2,4 @@ node_modules/
 assets/
 img/
 songs.json
+.DS_Store
