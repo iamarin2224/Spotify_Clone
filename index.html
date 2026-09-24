@@ -215,31 +215,37 @@
                         </div>
                     </div>
 
-                    <div class="playbarBtns flex justify-center items-center gap-[20px] absolute left-[50%] top-[50%] translate-[-50%]">
-                        <button class="prevBtn p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900"><i class="fa-solid fa-backward-step"></i></button>
-                        <button class="playBtn p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900"><i class="fa-solid fa-play"></i></button>
-                        <button class="pauseBtn hidden p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900"><i class="fa-solid fa-pause"></i></button>
-                        <button class="nextBtn p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900"><i class="fa-solid fa-forward-step"></i></button>
+                    <div class="playbarBtns flex justify-center items-center gap-[15px] absolute left-[50%] top-[50%] translate-[-50%]">
+                        <button class="shuffleBtn p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900 text-gray-400 hover:text-white transition-colors" id="shuffleBtn" title="Shuffle (S)"><i class="fa-solid fa-shuffle"></i></button>
+                        <button class="prevBtn p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900" title="Previous (P)"><i class="fa-solid fa-backward-step"></i></button>
+                        <button class="playBtn p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900" title="Play (Space)"><i class="fa-solid fa-play"></i></button>
+                        <button class="pauseBtn hidden p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900" title="Pause (Space)"><i class="fa-solid fa-pause"></i></button>
+                        <button class="nextBtn p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900" title="Next (N)"><i class="fa-solid fa-forward-step"></i></button>
+                        <button class="repeatBtn p-[5px] w-[35px] h-[35px] rounded-full hover:bg-gray-900 text-gray-400 hover:text-white relative transition-colors" id="repeatBtn" title="Repeat (R)">
+                            <i class="fa-solid fa-repeat"></i>
+                            <span id="repeatBadge" class="hidden absolute top-[2px] right-[2px] text-[8px] font-bold bg-[#1db954] text-black w-[11px] h-[11px] rounded-full flex items-center justify-center leading-none">1</span>
+                        </button>
                     </div>
 
-                    <div class="songTime flex items-center gap-4">
+                    <div class="songTime flex items-center gap-3">
                         <div class="flex items-center gap-[1px]">
                             <p class="text-[14px]" id="currentTiming">0:00</p>
                             <p class="text-[16px] font-bold">/</p>
                             <p class="text-[14px]" id="totalDuration">0:00</p>
                         </div>
-                        <button class="text-white" id="mute">
-                            <i class="fa-solid fa-volume-high"></i>
-                        </button>
-                        <button class="text-white hidden" id="unmute">
-                            <i class="fa-solid fa-volume-xmark"></i>
-                        </button>
+                        <div class="volume-wrapper flex items-center gap-2">
+                            <button class="text-white hover:text-[#1db954] transition-colors" id="volumeBtn" title="Mute/Unmute (M)">
+                                <i class="fa-solid fa-volume-high" id="volumeIcon"></i>
+                            </button>
+                            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1" class="volume-slider w-[75px] h-[4px] cursor-pointer" title="Volume (Up/Down Arrow)">
+                        </div>
                     </div>
 
                 </div>   
                 
-                <div class="progressContainer w-[92%] mx-auto h-[6px] bg-gray-600 rounded-full cursor-pointer">
-                    <div class="progress w-0 h-full bg-white rounded-full relative transition-width duration-300 ease-linear after:content-['']  after:absolute after:right-[-2px] after:h-[12px] after:w-[12px] after:top-1/2 after:translate-y-[-50%] after:bg-gray-200 after:rounded-full after:shadow-2xl after:transition-all after:duration-300 after:ease-linear"></div>
+                <div class="progressContainer relative w-[92%] mx-auto h-[6px] bg-gray-600 rounded-full cursor-pointer group">
+                    <div id="progressTooltip" class="progress-tooltip hidden absolute -top-[28px] transform -translate-x-1/2 bg-gray-800 text-white text-[11px] font-semibold px-2 py-0.5 rounded shadow pointer-events-none">0:00</div>
+                    <div class="progress w-0 h-full bg-white group-hover:bg-[#1db954] rounded-full relative transition-all duration-150 ease-linear after:content-[''] after:absolute after:right-[-3px] after:h-[12px] after:w-[12px] after:top-1/2 after:translate-y-[-50%] after:bg-white after:rounded-full after:shadow-md after:opacity-0 group-hover:after:opacity-100 after:transition-opacity"></div>
                 </div>
 
             </div>
