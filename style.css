@@ -96,6 +96,74 @@ button{
   -o-transition: all 0.2s linear;
 }
 
+/* Shuffle and Repeat Active State */
+.active-control {
+  color: #1db954 !important;
+}
+
+.active-control::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: #1db954;
+  border-radius: 50%;
+}
+
+/* Custom Volume Slider */
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #555;
+  border-radius: 9999px;
+  outline: none;
+  transition: background 0.15s;
+}
+
+.volume-slider:hover {
+  background: #1db954;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.volume-wrapper:hover .volume-slider::-webkit-slider-thumb {
+  opacity: 1;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.volume-wrapper:hover .volume-slider::-moz-range-thumb {
+  opacity: 1;
+}
+
+/* Scrubbing progress state */
+.is-scrubbing .progress {
+  transition: none !important;
+}
+
 @media (max-width: 1060px){
   .left{
     position: absolute;
@@ -119,5 +187,15 @@ button{
   }
   .cross-div{
     display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .volume-slider {
+    width: 50px;
+  }
+  .playbar-content {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
   }
 }
